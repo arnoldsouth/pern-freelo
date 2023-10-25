@@ -32,9 +32,6 @@ const Landing = () => {
         >
           <Button marginX={majorScale(2)}>
             <Link to="/login">Login</Link>
-            {/* <Link to="/login" className="btn btn-primary">
-              Login
-            </Link> */}
           </Button>
 
           <Button>
