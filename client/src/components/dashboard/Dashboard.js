@@ -1,13 +1,15 @@
+import { Button, Pane, Text, majorScale } from 'evergreen-ui';
+
 import React, { Fragment, useEffect, useState } from 'react';
 // import { toast } from 'react-toastify';
 
-import InputTodo from './todolist/InputTodo';
-import ListTodos from './todolist/ListTodos';
+// import InputTodo from './todolist/InputTodo';
+// import ListTodos from './todolist/ListTodos';
 
 const Dashboard = ({ setAuth }) => {
   const [name, setName] = useState('');
-  const [allTodos, setAllTodos] = useState([]);
-  const [todosChange, setTodosChange] = useState(false);
+  // const [allTodos, setAllTodos] = useState([]);
+  // const [todosChange, setTodosChange] = useState(false);
 
   const getProfile = async () => {
     try {
@@ -18,7 +20,7 @@ const Dashboard = ({ setAuth }) => {
 
       const parseData = await res.json();
 
-      setAllTodos(parseData);
+      // setAllTodos(parseData);
 
       setName(parseData[0].user_name);
     } catch (err) {
@@ -38,27 +40,31 @@ const Dashboard = ({ setAuth }) => {
     }
   };
 
+  // useEffect(() => {
+  //   getProfile();
+  //   setTodosChange(false);
+  // }, [todosChange]);
+
   useEffect(() => {
     getProfile();
-    setTodosChange(false);
-  }, [todosChange]);
+  }, []);
 
   return (
     <Fragment>
-      <div className="container">
-        <div className="d-flex mt-3 mx-3 justify-content-center gap-4">
-          <h2>{name}'s Dashboard</h2>
+      <Pane
+        display="flex"
+        alignItems="center"
+        justifyContent="space-between"
+        marginX={majorScale(2)}
+        marginY={majorScale(2)}
+      >
+        <Text>{name}'s Dashboard</Text>
 
-          <div>
-            <button onClick={(e) => logout(e)} className="btn btn-secondary">
-              Logout
-            </button>
-          </div>
-        </div>
+        <Button onClick={(e) => logout(e)}>Logout</Button>
 
-        <InputTodo setTodosChange={setTodosChange} />
-        <ListTodos allTodos={allTodos} setTodosChange={setTodosChange} />
-      </div>
+        {/* <InputTodo setTodosChange={setTodosChange} /> */}
+        {/* <ListTodos allTodos={allTodos} setTodosChange={setTodosChange} /> */}
+      </Pane>
     </Fragment>
   );
 };
