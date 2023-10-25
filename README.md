@@ -1,4 +1,4 @@
 # Todo:
 
-- [] Frontend React components
-- [] Write backend routes
+- [ ] Frontend React components
+- [ ] Write backend routes
