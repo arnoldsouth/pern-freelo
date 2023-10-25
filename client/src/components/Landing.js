@@ -1,20 +1,10 @@
-import React, { Fragment, useEffect } from 'react';
-// import { useHistory } from 'react-router-dom';
+import React, { Fragment } from 'react';
+
 import { Link } from 'react-router-dom';
 
-import { Button, Pane, Text, majorScale } from 'evergreen-ui';
+import { Button, Pane, majorScale } from 'evergreen-ui';
 
 const Landing = () => {
-  // let history = useHistory();
-
-  // useEffect(() => {
-  //   const token = localStorage.getItem('token');
-
-  //   if (token) {
-  //     history.push('/dashboard');
-  //   }
-  // }, []);
-
   return (
     <Fragment>
       <Pane
