@@ -1,15 +1,10 @@
 import { Button, Pane, Text, majorScale } from 'evergreen-ui';
 
 import React, { Fragment, useEffect, useState } from 'react';
-// import { toast } from 'react-toastify';
-
-// import InputTodo from './todolist/InputTodo';
-// import ListTodos from './todolist/ListTodos';
+import { Link } from 'react-router-dom';
 
 const Dashboard = ({ setAuth }) => {
   const [name, setName] = useState('');
-  // const [allTodos, setAllTodos] = useState([]);
-  // const [todosChange, setTodosChange] = useState(false);
 
   const getProfile = async () => {
     try {
@@ -19,8 +14,6 @@ const Dashboard = ({ setAuth }) => {
       });
 
       const parseData = await res.json();
-
-      // setAllTodos(parseData);
 
       setName(parseData[0].user_name);
     } catch (err) {
@@ -34,16 +27,10 @@ const Dashboard = ({ setAuth }) => {
     try {
       localStorage.removeItem('token');
       setAuth(false);
-      // toast.success('Logged out');
     } catch (err) {
       console.error(err.message);
     }
   };
-
-  // useEffect(() => {
-  //   getProfile();
-  //   setTodosChange(false);
-  // }, [todosChange]);
 
   useEffect(() => {
     getProfile();
@@ -58,12 +45,14 @@ const Dashboard = ({ setAuth }) => {
         marginX={majorScale(2)}
         marginY={majorScale(2)}
       >
-        <Text>{name}'s Dashboard</Text>
+        <Link to="/dashboard">freelo</Link>
 
-        <Button onClick={(e) => logout(e)}>Logout</Button>
+        <Text>Dashboard</Text>
+        <Pane>
+          <Text marginX={majorScale(2)}>{name}</Text>
 
-        {/* <InputTodo setTodosChange={setTodosChange} /> */}
-        {/* <ListTodos allTodos={allTodos} setTodosChange={setTodosChange} /> */}
+          <Button onClick={(e) => logout(e)}>Logout</Button>
+        </Pane>
       </Pane>
     </Fragment>
   );

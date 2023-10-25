@@ -1,7 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
-// import { toast, ToastContainer } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
 
 import Login from './components/Login';
 import Register from './components/Register';
@@ -38,7 +36,18 @@ const App = () => {
     <BrowserRouter>
       <Fragment>
         <Routes>
-          <Route path="/" element={<Landing />} />
+          {/* <Route path="/" element={<Landing />} /> */}
+
+          <Route
+            path="/"
+            element={
+              isAuthenticated ? (
+                <Dashboard setAuth={setAuth} />
+              ) : (
+                <Navigate to="/login" replace />
+              )
+            }
+          />
 
           <Route
             path="/dashboard"
@@ -72,19 +81,9 @@ const App = () => {
               )
             }
           />
+
+          <Route path="/" element={<Landing />} />
         </Routes>
-        {/* <ToastContainer
-          position="top-right"
-          autoClose={1000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss={false}
-          draggable
-          pauseOnHover={false}
-          theme="light"
-        /> */}
       </Fragment>
     </BrowserRouter>
   );
