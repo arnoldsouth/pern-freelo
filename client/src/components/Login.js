@@ -1,7 +1,14 @@
 import React, { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Button, Pane, Text, TextInputField, majorScale } from 'evergreen-ui';
+import {
+  Button,
+  Heading,
+  Pane,
+  Text,
+  TextInputField,
+  majorScale,
+} from 'evergreen-ui';
 
 const Login = ({ setAuth }) => {
   const [inputs, setInputs] = useState({
@@ -51,8 +58,19 @@ const Login = ({ setAuth }) => {
         marginX={majorScale(2)}
         marginY={majorScale(2)}
       >
-        <Link to="/dashboard">freelo</Link>
-        <Text>Login</Text>
+        <Link to="/dashboard">
+          <Heading size={800} textDecoration="none">
+            freelo
+          </Heading>
+        </Link>
+
+        <Heading size={600}>Login</Heading>
+
+        <Pane>
+          <Button>
+            <Link to="/register">Register</Link>
+          </Button>
+        </Pane>
       </Pane>
 
       <Pane display="flex" alignItems="center" justifyContent="center">
@@ -95,9 +113,9 @@ const Login = ({ setAuth }) => {
         marginY={majorScale(2)}
       >
         <Pane>
-          <Text marginX={majorScale(2)}>Don't have an account?</Text>
+          <Text>Don't have an account?</Text>
 
-          <Button>
+          <Button appearance="minimal">
             <Link to="/register">Register</Link>
           </Button>
         </Pane>
